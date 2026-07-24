@@ -16,7 +16,7 @@ export default function Header() {
           <Leaf className="w-8 h-8 text-[var(--color-terracotta)] group-hover:opacity-80 transition-opacity" />
           <div className="flex flex-col">
             <span className="font-serif text-xl font-semibold leading-none text-[var(--color-forest)]">
-              Dr. Dogra
+              Dr. Demo
             </span>
             <span className="text-xs tracking-widest uppercase text-[var(--color-forest)]/70 mt-1">
               Ayurveda Clinic
@@ -58,7 +58,7 @@ export default function Header() {
             </Link>
             {/* Tooltip Popup */}
             <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-[var(--color-forest)] text-[var(--color-cream)] text-[10px] p-2 rounded-sm text-center opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-50 shadow-md">
-              Learn about Dr. Dogra's experience
+              Learn about Dr. Demo's experience
             </div>
           </div>
 

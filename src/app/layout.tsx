@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Dr. Dogra Ayurveda Clinic & Panchkarma Center",
-  description: "Authentic Ayurvedic treatments and Panchkarma therapies by Dr. Dogra.",
+  title: "Dr. Demo Ayurveda Clinic & Panchkarma Center",
+  description: "Authentic Ayurvedic treatments and Panchkarma therapies by Dr. Demo.",
 };
 
 export default function RootLayout({

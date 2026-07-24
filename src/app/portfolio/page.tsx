@@ -60,7 +60,7 @@ export default function PortfolioPage() {
 
   const testimonials = [
     {
-      quote: "The chronic digestive issues I suffered from for 5 years were addressed successfully by Dr. Dogra. The clinical approach to Panchkarma and strict dietary adjustment made a massive difference.",
+      quote: "The chronic digestive issues I suffered from for 5 years were addressed successfully by Dr. Demo. The clinical approach to Panchkarma and strict dietary adjustment made a massive difference.",
       author: "Mr. Sharma, Phagwara",
       treatment: "Panchakarma (Detoxification)"
     },
@@ -70,7 +70,7 @@ export default function PortfolioPage() {
       treatment: "Abhyanga & Basti Therapy"
     },
     {
-      quote: "Very professional clinical setup. Unlike commercial spas, Dr. Dogra conducts a rigorous pulse diagnosis first and only prescribes therapies that are medically necessary.",
+      quote: "Very professional clinical setup. Unlike commercial spas, Dr. Demo conducts a rigorous pulse diagnosis first and only prescribes therapies that are medically necessary.",
       author: "Dr. A. Verma, Jalandhar",
       treatment: "General Consultation & Nasyam"
     },
@@ -169,7 +169,7 @@ export default function PortfolioPage() {
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
             <h2 className="text-3xl font-serif text-[var(--color-forest)] font-semibold">Clinical Testimonials</h2>
             <p className="text-sm text-[var(--color-forest)]/70">
-              Read how Dr. Dogra's customized medical therapies and Panchkarma programs have helped patients manage chronic illnesses.
+              Read how Dr. Demo's customized medical therapies and Panchkarma programs have helped patients manage chronic illnesses.
             </p>
           </div>
 

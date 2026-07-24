@@ -7,7 +7,7 @@ export default function AboutPage() {
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-5xl">
           <h1 className="text-4xl md:text-5xl font-serif text-[var(--color-forest)] font-semibold mb-6">
-            About Dr. Dogra
+            About Dr. Demo
           </h1>
           <div className="w-20 h-1 bg-[var(--color-terracotta)] rounded-full"></div>
         </div>
@@ -67,10 +67,10 @@ export default function AboutPage() {
               <div className="space-y-6 text-lg text-[var(--color-forest)]/90 leading-relaxed">
                 <h2 className="text-2xl font-serif text-[var(--color-forest)] font-semibold mb-4">Clinical Philosophy & Approach</h2>
                 <p>
-                  Dr. Dogra's practice is rooted in the classical principles of Ayurveda, integrating rigorous traditional diagnostics with contemporary clinical protocols. The core philosophy centers on treating the underlying pathophysiology of disease rather than merely suppressing symptoms. Every treatment regimen is meticulously formulated based on an individual's unique physiological constitution (Prakriti) and the current state of doshic imbalance (Vikriti).
+                  Dr. Demo's practice is rooted in the classical principles of Ayurveda, integrating rigorous traditional diagnostics with contemporary clinical protocols. The core philosophy centers on treating the underlying pathophysiology of disease rather than merely suppressing symptoms. Every treatment regimen is meticulously formulated based on an individual's unique physiological constitution (Prakriti) and the current state of doshic imbalance (Vikriti).
                 </p>
                 <p>
-                  Specializing in Panchkarma—the comprehensive five-step detoxification and bio-purification therapy—Dr. Dogra employs these intensive procedures to eliminate deep-seated metabolic toxins. This systemic purification restores the body's innate homeostasis, enabling enhanced cellular function and long-term remission in various chronic conditions.
+                  Specializing in Panchkarma—the comprehensive five-step detoxification and bio-purification therapy—Dr. Demo employs these intensive procedures to eliminate deep-seated metabolic toxins. This systemic purification restores the body's innate homeostasis, enabling enhanced cellular function and long-term remission in various chronic conditions.
                 </p>
                 <p>
                   Care is administered in a disciplined, professional clinical environment where patient safety, hygiene, and the authenticity of therapeutic herbal preparations are paramount. The ultimate goal is to provide evidence-based, holistic interventions that foster sustained health, vitality, and systemic resilience.

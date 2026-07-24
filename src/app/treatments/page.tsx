@@ -48,7 +48,7 @@ export default function TreatmentsPage() {
       title: "Herbal Consultation & Prescription",
       icon: HelpCircle,
       duration: "30 Minutes",
-      description: "In-depth diagnostic assessment utilizing traditional pulse diagnosis (Nadi Pariksha), tongue inspection, and physical analysis to formulate targeted treatment plans. Dr. Dogra prescribes customized, single-herb or poly-herbal pharmacopoeia preparations combined with strict dosage regimens.",
+      description: "In-depth diagnostic assessment utilizing traditional pulse diagnosis (Nadi Pariksha), tongue inspection, and physical analysis to formulate targeted treatment plans. Dr. Demo prescribes customized, single-herb or poly-herbal pharmacopoeia preparations combined with strict dosage regimens.",
       indications: ["Chronic digestive disorders (IBS, acid reflux)", "Hormonal imbalances", "Cardiovascular wellness", "Skin diseases (psoriasis, eczema)"]
     },
     {
@@ -132,7 +132,7 @@ export default function TreatmentsPage() {
         <div className="container mx-auto max-w-3xl text-center space-y-6">
           <h3 className="font-serif text-2xl font-semibold">Important Clinical Notice</h3>
           <p className="text-sm text-[var(--color-cream)]/80 leading-relaxed">
-            Panchkarma procedures are clinical interventions. Therapy duration, scheduling, and choice of herbal oils or formulations are exclusively determined by Dr. Dogra following a comprehensive physical and pulse examination. We do not provide self-selected wellness therapies without diagnosis.
+            Panchkarma procedures are clinical interventions. Therapy duration, scheduling, and choice of herbal oils or formulations are exclusively determined by Dr. Demo following a comprehensive physical and pulse examination. We do not provide self-selected wellness therapies without diagnosis.
           </p>
           <div className="pt-4">
             <Link 

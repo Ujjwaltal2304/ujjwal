@@ -88,7 +88,7 @@ function AppointmentForm() {
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
               className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
-              placeholder="e.g. +91 98765 43210"
+              placeholder="e.g. 1234567890"
             />
           </div>
 
@@ -218,13 +218,13 @@ export default function AppointmentsPage() {
             </div>
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">
               <a 
-                href="tel:+919876543210" 
+                href="tel:1234567890" 
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-sm border border-[var(--color-forest)]/20 hover:border-[var(--color-forest)]/40 text-[var(--color-forest)] text-xs font-semibold uppercase tracking-wider transition-colors bg-white w-full sm:w-auto justify-center"
               >
-                <Phone className="w-4 h-4 text-[var(--color-terracotta)]" /> Call +91 98765 43210
+                <Phone className="w-4 h-4 text-[var(--color-terracotta)]" /> Call 1234567890
               </a>
               <a 
-                href="https://wa.me/919876543210" 
+                href="https://wa.me/911234567890" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-sm bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold uppercase tracking-wider transition-colors w-full sm:w-auto justify-center"
@@ -268,7 +268,7 @@ export default function AppointmentsPage() {
                   </p>
                   <p className="flex items-center gap-2.5">
                     <Phone className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>+91 98765 43210</span>
+                    <span>1234567890</span>
                   </p>
                 </div>
                 <a 
@@ -298,7 +298,7 @@ export default function AppointmentsPage() {
                   </p>
                   <p className="flex items-center gap-2.5">
                     <Phone className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>+91 98765 43210</span>
+                    <span>1234567890</span>
                   </p>
                 </div>
                 <a 

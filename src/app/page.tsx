@@ -23,13 +23,13 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link 
                 href="/appointments" 
-                className="px-8 py-4 bg-[var(--color-forest)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-forest)]/90 transition-colors shadow-sm"
+                className="btn-pop px-8 py-4 bg-[var(--color-forest)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-forest)]/90 transition-colors shadow-sm"
               >
                 Book an Appointment
               </Link>
               <Link 
                 href="/treatments" 
-                className="px-8 py-4 bg-transparent text-[var(--color-forest)] font-medium rounded-sm border border-[var(--color-forest)]/20 hover:border-[var(--color-forest)]/40 transition-colors"
+                className="btn-pop px-8 py-4 bg-transparent text-[var(--color-forest)] font-medium rounded-sm border border-[var(--color-forest)]/20 hover:border-[var(--color-forest)]/40 transition-colors"
               >
                 Explore Treatments
               </Link>
@@ -38,16 +38,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Intro to Dr. Dogra */}
+      {/* 2. Intro to Dr. Demo */}
       <section className="py-20 bg-white border-y border-[var(--color-forest)]/5">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl font-serif text-[var(--color-forest)] font-medium">Under the Care of Dr. Dogra</h2>
+            <h2 className="text-3xl font-serif text-[var(--color-forest)] font-medium">Under the Care of Dr. Demo</h2>
             <p className="text-[var(--color-forest)]/80 leading-relaxed text-lg">
-              With extensive clinical experience in traditional Ayurvedic medicine, Dr. Dogra specializes in chronic disease management and authentic Panchkarma detoxification. Every treatment plan is meticulously tailored to the patient's unique physiological constitution and current state of health.
+              With extensive clinical experience in traditional Ayurvedic medicine, Dr. Demo specializes in chronic disease management and authentic Panchkarma detoxification. Every treatment plan is meticulously tailored to the patient's unique physiological constitution and current state of health.
             </p>
             <Link href="/about" className="inline-flex items-center gap-2 text-[var(--color-terracotta)] font-medium hover:text-[var(--color-terracotta)]/80 transition-colors mt-2">
-              Learn more about Dr. Dogra <ArrowRight className="w-4 h-4" />
+              Learn more about Dr. Demo <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -409,7 +409,7 @@ export default function Home() {
               Begin your journey toward optimal health and lasting wellness.
             </h2>
             <p className="text-[var(--color-forest)]/70 text-lg max-w-2xl mx-auto">
-              Schedule a consultation at either of our clinic locations to discuss a personalized treatment plan, or contact Dr. Dogra directly.
+              Schedule a consultation at either of our clinic locations to discuss a personalized treatment plan, or contact Dr. Demo directly.
             </p>
 
             {/* Direct Doctor Contacts */}
@@ -420,8 +420,8 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-serif text-sm font-semibold text-[var(--color-forest)] mb-1">Direct Call / WhatsApp</h4>
-                  <a href="tel:+919876543210" className="text-sm font-bold text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors block">
-                    +91 98765 43210
+                  <a href="tel:1234567890" className="text-sm font-bold text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors block">
+                    1234567890
                   </a>
                   <p className="text-[10px] text-[var(--color-forest)]/50 mt-1">Available 10:00 AM – 8:00 PM</p>
                 </div>
@@ -433,8 +433,8 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-serif text-sm font-semibold text-[var(--color-forest)] mb-1">Email Consultation</h4>
-                  <a href="mailto:dr.dogra.ayurveda@gmail.com" className="text-sm font-bold text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors block break-all">
-                    dr.dogra.ayurveda@gmail.com
+                  <a href="mailto:demo@gmaail.com" className="text-sm font-bold text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors block break-all">
+                    demo@gmaail.com
                   </a>
                   <p className="text-[10px] text-[var(--color-forest)]/50 mt-1">For reports &amp; clinical queries</p>
                 </div>

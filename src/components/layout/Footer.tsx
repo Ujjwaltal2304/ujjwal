@@ -45,7 +45,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-[var(--color-cream)]/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 text-xs text-[var(--color-cream)]/60 text-center md:text-left">
-          <p>&copy; {new Date().getFullYear()} Dr. Dogra Ayurveda Clinic. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Dr. Demo Ayurveda Clinic. All rights reserved.</p>
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
             <div className="flex gap-4">
               <Link href="/about" className="hover:text-[var(--color-cream)] transition-colors">About</Link>
