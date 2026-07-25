@@ -35,7 +35,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <Link 
                 href="/appointments" 
-                className="btn-pop px-8 py-4 bg-[var(--color-forest)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-forest)]/90 transition-colors shadow-sm"
+                className="btn-pop px-8 py-4 bg-[#28a745] text-white font-medium rounded-sm border border-[#28a745] hover:bg-transparent hover:border-white transition-colors shadow-sm"
               >
                 Book an Appointment
               </Link>
