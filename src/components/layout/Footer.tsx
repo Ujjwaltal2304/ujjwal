@@ -2,33 +2,42 @@ import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
 export default function Footer() {
+  const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace(/-+$/, '');
+
   const sitemapData = [
     {
       title: "Ayurveda Treatments",
+      basePath: "/treatments",
       items: ["Abhyangam", "BashpaSweda", "Ilakkizhi", "Ksheeradhara", "MukhaLepa", "Nasya", "Panchakarma", "Padabhyanga", "Podikizhi", "Paschatkarma", "Shirodhara", "Shirovasti", "Shiroabhyanga", "Raktamokshana", "Thalam", "Navarakkizhi", "Virechana", "Vamana", "Vasti", "Udwartana", "Kativasti"]
     },
     {
       title: "Diseases and Conditions",
+      basePath: "/conditions",
       items: ["Ayurveda Parasurgery", "Autoimmune Disorders", "Blood Disorders", "Cardiology", "Dermatology", "Endocrinology", "Ear-Nose Throat-Mouth", "Elder-Care", "Gastrointestinal", "Gynaecology", "Integrative Oncology", "Infectious Diseases", "Liver-Hepato-Biliary-Care", "Mental Health & De-addiction", "Male Reproductive Disorders", "Nephrology", "Neurological Disorders", "Orthopaedic Disorders", "Ophthalmology", "Obstetrics Integrative", "Preventive Health & Wellbeing", "Pulmonology", "Pediatric Development Disorder", "Sleep Disorders"]
     },
     {
       title: "Ayurveda Doctors",
+      basePath: "/doctors",
       items: ["Doctors in Bangalore", "Doctors in Kochi", "Doctors in Delhi", "Doctors in Uttarakhand", "Doctors in Chennai", "Doctors in Hyderabad", "Doctors in Mumbai"]
     },
     {
       title: "Ayurveda Medicine",
+      basePath: "/medicine",
       items: ["Skin Care", "Hair Care", "Bioactive Hydration Drinks", "Pain Management", "Immunity Booster", "Cough, Cold & Fever", "Bone & Joint", "Gut Health"]
     },
     {
       title: "Ayurveda Services",
+      basePath: "/services",
       items: ["Integrative Care & Rehabilitation", "International Patients", "Root Cause Disease Reversal", "Super-Fast Ayurveda Care", "Swasthya Care", "Whole Person Care", "Wellbeing Programs"]
     },
     {
       title: "About Apollo AyurVAID",
+      basePath: "/about",
       items: ["Awards & Recognitions", "Contact Us", "Company Overview", "Careers", "News", "Quality", "Vision & Mission", "Team"]
     },
     {
       title: "Insurance & More",
+      basePath: "/insurance",
       items: ["Medical Insurance CGHS", "Sitemap"]
     }
   ];
@@ -46,14 +55,18 @@ export default function Footer() {
             <div key={index}>
               <h3 className="text-lg font-semibold text-[#10B981] mb-5 border-b border-[#10B981]/20 pb-2">{section.title}</h3>
               <ul className="space-y-2.5">
-                {section.items.map((item, i) => (
-                  <li key={i}>
-                    <Link href="#" className="text-sm text-[#F4FAF8]/70 hover:text-[#38bdf8] transition-colors flex items-center gap-1.5 group">
-                      <span className="w-1 h-1 rounded-full bg-[#38bdf8]/50 group-hover:bg-[#38bdf8] transition-colors"></span>
-                      {item}
-                    </Link>
-                  </li>
-                ))}
+                {section.items.map((item, i) => {
+                  let href = `${section.basePath}/${slugify(item)}`;
+                  if (item === "Sitemap") href = "#"; // Special case for the sitemap item itself
+                  return (
+                    <li key={i}>
+                      <Link href={href} className="text-sm text-[#F4FAF8]/70 hover:text-[#38bdf8] transition-colors flex items-center gap-1.5 group">
+                        <span className="w-1 h-1 rounded-full bg-[#38bdf8]/50 group-hover:bg-[#38bdf8] transition-colors"></span>
+                        {item}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
