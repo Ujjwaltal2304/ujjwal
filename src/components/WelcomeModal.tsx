@@ -2,20 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { X, UserPlus, Stethoscope, Store } from "lucide-react";
+import { X, User, Stethoscope, Store, ArrowRight, UserCircle2 } from "lucide-react";
 
 export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Check if the user has already made a selection
-    const hasSelected = localStorage.getItem("userRole");
-    if (!hasSelected) {
-      // Small delay for smooth entry
-      const timer = setTimeout(() => setIsOpen(true), 800);
-      return () => clearTimeout(timer);
-    }
+    // Show modal instantly for a smooth, lag-free experience
+    setIsOpen(true);
   }, []);
 
   if (!isOpen) return null;
@@ -30,76 +25,77 @@ export default function WelcomeModal() {
   };
 
   const handleClose = () => {
-    localStorage.setItem("userRole", "guest"); // Mark as guest so it doesn't pop up again
+    localStorage.setItem("userRole", "guest");
     setIsOpen(false);
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[var(--color-forest)]/40 backdrop-blur-sm p-4 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150">
       <div 
-        className="relative w-full max-w-lg bg-white rounded-sm shadow-2xl overflow-hidden animate-in zoom-in-95 duration-300"
+        className="relative w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150 pb-8"
       >
-        {/* Close button */}
-        <button 
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-[var(--color-forest)]/40 hover:text-[var(--color-forest)] hover:bg-[var(--color-forest)]/5 p-2 rounded-full transition-colors z-10"
-          aria-label="Close"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
         {/* Header */}
-        <div className="bg-[var(--color-cream)] p-8 text-center border-b border-[var(--color-forest)]/10">
-          <h2 className="text-3xl font-serif font-semibold text-[var(--color-forest)] mb-2">
+        <div className="pt-8 pb-6 px-8 text-center relative">
+          <button 
+            onClick={handleClose}
+            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-1"
+            aria-label="Close"
+          >
+            <X className="w-5 h-5" />
+          </button>
+          
+          <h2 className="text-2xl font-sans font-semibold text-gray-800 mb-1">
             Welcome to Dr. Demo's Clinic
           </h2>
-          <p className="text-[var(--color-forest)]/70 text-sm">
-            Please tell us who you are so we can personalize your experience.
+          <p className="text-gray-500 text-sm">
+            Select your user type to continue
           </p>
         </div>
 
         {/* Options */}
-        <div className="p-6 space-y-4 bg-white">
+        <div className="px-8 space-y-4">
           <button
             onClick={() => handleSelection("doctor", "/doctor")}
-            className="w-full flex items-center gap-4 p-4 rounded-sm border border-[var(--color-forest)]/15 hover:border-[var(--color-terracotta)]/50 hover:bg-[var(--color-cream)]/50 text-left transition-all btn-pop group"
+            className="w-full flex items-center gap-4 px-5 py-4 rounded-lg bg-[#14b8a6] hover:bg-[#0d9488] text-left transition-colors group shadow-md"
           >
-            <div className="p-3 bg-[var(--color-cream)] rounded-full text-[var(--color-terracotta)] group-hover:bg-[var(--color-terracotta)] group-hover:text-white transition-colors">
+            <div className="shrink-0 flex items-center justify-center w-12 h-12 bg-white/20 rounded-full text-white">
               <Stethoscope className="w-6 h-6" />
             </div>
-            <div>
-              <h3 className="font-semibold text-[var(--color-forest)]">Doctor / Student</h3>
-              <p className="text-xs text-[var(--color-forest)]/60 mt-1">Access clinical resources, academic materials, and practitioner tools.</p>
+            <div className="flex-1">
+              <h3 className="font-semibold text-white text-lg leading-tight">Doctor/Student</h3>
+              <p className="text-xs text-white/80 mt-1">Join registered Ayurveda practitioners.</p>
             </div>
+            <ArrowRight className="w-5 h-5 text-white shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <button
             onClick={() => handleSelection("chemist", "/chemist")}
-            className="w-full flex items-center gap-4 p-4 rounded-sm border border-[var(--color-forest)]/15 hover:border-[var(--color-terracotta)]/50 hover:bg-[var(--color-cream)]/50 text-left transition-all btn-pop group"
+            className="w-full flex items-center gap-4 px-5 py-4 rounded-lg bg-[#14b8a6] hover:bg-[#0d9488] text-left transition-colors group shadow-md"
           >
-            <div className="p-3 bg-[var(--color-cream)] rounded-full text-[var(--color-terracotta)] group-hover:bg-[var(--color-terracotta)] group-hover:text-white transition-colors">
+            <div className="shrink-0 flex items-center justify-center w-12 h-12 bg-white/20 rounded-full text-white">
               <Store className="w-6 h-6" />
             </div>
-            <div>
-              <h3 className="font-semibold text-[var(--color-forest)]">Chemist / Retailer</h3>
-              <p className="text-xs text-[var(--color-forest)]/60 mt-1">View wholesale inventory, place orders, and manage stock.</p>
+            <div className="flex-1">
+              <h3 className="font-semibold text-white text-lg leading-tight">Chemist/Retailer</h3>
+              <p className="text-xs text-white/80 mt-1">The Largest Selection of Ayurvedic Medicines.</p>
             </div>
+            <ArrowRight className="w-5 h-5 text-white shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
 
           <button
             onClick={() => handleSelection("patient", "")}
-            className="w-full flex items-center gap-4 p-4 rounded-sm border border-[var(--color-forest)]/15 hover:border-[var(--color-terracotta)]/50 hover:bg-[var(--color-cream)]/50 text-left transition-all btn-pop group"
+            className="w-full flex items-center gap-4 px-5 py-4 rounded-lg bg-[#14b8a6] hover:bg-[#0d9488] text-left transition-colors group shadow-md"
           >
-            <div className="p-3 bg-[var(--color-cream)] rounded-full text-[var(--color-terracotta)] group-hover:bg-[var(--color-terracotta)] group-hover:text-white transition-colors">
-              <UserPlus className="w-6 h-6" />
+            <div className="shrink-0 flex items-center justify-center w-12 h-12 bg-white/20 rounded-full text-white">
+              <UserCircle2 className="w-6 h-6" />
             </div>
-            <div>
-              <h3 className="font-semibold text-[var(--color-forest)]">Patient</h3>
-              <p className="text-xs text-[var(--color-forest)]/60 mt-1">Explore therapies, book appointments, and read wellness blogs.</p>
+            <div className="flex-1">
+              <h3 className="font-semibold text-white text-lg leading-tight">Patient</h3>
+              <p className="text-xs text-white/80 mt-1">Consult certified Ayurvedic doctors online.</p>
             </div>
+            <ArrowRight className="w-5 h-5 text-white shrink-0 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
-
       </div>
     </div>
   );
