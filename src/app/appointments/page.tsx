@@ -1,258 +1,232 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { Clock, MapPin, Phone, Calendar, CheckCircle, ExternalLink, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+import { Clock, Calendar, CheckCircle, ArrowLeft, Filter, User } from "lucide-react";
 
-function AppointmentForm() {
-  const searchParams = useSearchParams();
+type TimeSlot = {
+  time: string;
+  isBooked: boolean;
+};
+
+const morningSlots: TimeSlot[] = [
+  { time: "09:00 AM", isBooked: false },
+  { time: "09:30 AM", isBooked: true },
+  { time: "10:00 AM", isBooked: false },
+  { time: "10:30 AM", isBooked: false },
+  { time: "11:00 AM", isBooked: true },
+  { time: "11:30 AM", isBooked: false },
+];
+
+const afternoonSlots: TimeSlot[] = [
+  { time: "02:00 PM", isBooked: false },
+  { time: "02:30 PM", isBooked: false },
+  { time: "03:00 PM", isBooked: true },
+  { time: "03:30 PM", isBooked: false },
+];
+
+const eveningSlots: TimeSlot[] = [
+  { time: "06:00 PM", isBooked: true },
+  { time: "06:30 PM", isBooked: false },
+  { time: "07:00 PM", isBooked: false },
+  { time: "07:30 PM", isBooked: true },
+];
+
+export default function DoctorAppointmentsPage() {
+  const [selectedDepartment, setSelectedDepartment] = useState("general");
+  const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    location: "phagwara",
-    treatment: "general",
-    date: "",
-    timeSlot: "morning",
-    message: ""
+    reason: ""
   });
   const [submitted, setSubmitted] = useState(false);
 
-  useEffect(() => {
-    const preselected = searchParams.get("treatment");
-    if (preselected) {
-      setFormData(prev => ({
-        ...prev,
-        treatment: preselected
-      }));
-    }
-  }, [searchParams]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Appointment Request Submitted:", formData);
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 500);
+    setSubmitted(true);
   };
 
+  const renderSlots = (slots: TimeSlot[]) => (
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      {slots.map((slot) => (
+        <button
+          key={slot.time}
+          disabled={slot.isBooked}
+          onClick={() => setSelectedSlot(slot.time)}
+          className={`px-4 py-3 text-sm font-medium rounded-sm border transition-all ${
+            slot.isBooked
+              ? "bg-gray-100 border-gray-200 text-gray-400 cursor-not-allowed"
+              : selectedSlot === slot.time
+              ? "bg-[var(--color-terracotta)] border-[var(--color-terracotta)] text-white shadow-md scale-105"
+              : "bg-white border-[var(--color-forest)]/20 text-[var(--color-forest)] hover:border-[var(--color-terracotta)] hover:text-[var(--color-terracotta)]"
+          }`}
+        >
+          {slot.time}
+          {slot.isBooked && <span className="block text-[10px] mt-1 font-normal uppercase">Booked</span>}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
-    <div className="bg-white p-8 md:p-10 border border-[var(--color-forest)]/10 rounded-sm shadow-sm space-y-6">
-      {submitted ? (
-        <div className="text-center py-12 space-y-4">
-          <div className="inline-flex p-3 bg-green-50 rounded-full text-green-600 mb-2">
-            <CheckCircle className="w-12 h-12" />
-          </div>
-          <h3 className="font-serif text-2xl font-semibold text-[var(--color-forest)]">Request Received</h3>
-          <p className="text-sm text-[var(--color-forest)]/70 max-w-sm mx-auto leading-relaxed">
-            Thank you. We have received your consultation request. A representative from the {formData.location === "phagwara" ? "Main" : "City"} clinic will call you shortly to finalize your appointment.
+    <div className="min-h-screen bg-[var(--color-cream)]/20 py-12 md:py-20">
+      <div className="container mx-auto px-4 max-w-5xl">
+        <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors mb-8">
+          <ArrowLeft className="w-4 h-4" /> Back to Home
+        </Link>
+        
+        <div className="text-center mb-12 space-y-4">
+          <h1 className="text-4xl md:text-5xl font-serif text-[var(--color-forest)] font-semibold">
+            Doctor Consultation
+          </h1>
+          <p className="text-lg text-[var(--color-forest)]/70 max-w-2xl mx-auto">
+            Schedule a dedicated appointment with Dr. Demo for personalized Ayurvedic assessment and treatment planning.
           </p>
-          <button 
-            onClick={() => {
-              setSubmitted(false);
-              setFormData({
-                name: "",
-                phone: "",
-                location: "phagwara",
-                treatment: "general",
-                date: "",
-                timeSlot: "morning",
-                message: ""
-              });
-            }}
-            className="text-xs font-semibold uppercase tracking-wider text-[var(--color-terracotta)] hover:underline pt-4"
-          >
-            Submit another request
-          </button>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-1">
-            <label htmlFor="name" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Full Name</label>
-            <input 
-              type="text" 
-              id="name"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
-              placeholder="e.g. Rajinder Singh"
-            />
-          </div>
 
-          <div className="space-y-1">
-            <label htmlFor="phone" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Contact Number</label>
-            <input 
-              type="tel" 
-              id="phone"
-              required
-              value={formData.phone}
-              onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
-              placeholder="e.g. 1234567890"
-            />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label htmlFor="location" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Preferred Location</label>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column: Filters and Slots */}
+          <div className="lg:col-span-7 space-y-8">
+            <div className="bg-white p-6 rounded-sm shadow-sm border border-[var(--color-forest)]/10">
+              <div className="flex items-center gap-2 mb-4">
+                <Filter className="w-5 h-5 text-[var(--color-terracotta)]" />
+                <h2 className="text-lg font-serif font-semibold text-[var(--color-forest)]">Select Department</h2>
+              </div>
               <select 
-                id="location"
-                value={formData.location}
-                onChange={(e) => setFormData({...formData, location: e.target.value})}
+                value={selectedDepartment}
+                onChange={(e) => setSelectedDepartment(e.target.value)}
                 className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
               >
-                <option value="phagwara">Main Clinic</option>
-                <option value="jalandhar">City Clinic</option>
+                <option value="general">General Ayurveda Physician</option>
+                <option value="panchkarma">Panchkarma Specialist</option>
+                <option value="kayachitsa">Kayachitsa (Internal Medicine)</option>
+                <option value="swasthavaritta">Swasthavaritta (Preventive)</option>
               </select>
             </div>
 
-            <div className="space-y-1">
-              <label htmlFor="treatment" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Reason for Visit / Treatment</label>
-              <select 
-                id="treatment"
-                value={formData.treatment}
-                onChange={(e) => setFormData({...formData, treatment: e.target.value})}
-                className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
-              >
-                <option value="general">General Consultation</option>
-                <option value="panchakarma">Panchakarma (Detox Therapy)</option>
-                <option value="shirodhara">Shirodhara</option>
-                <option value="abhyanga">Abhyanga (Oil Massage)</option>
-                <option value="nasyam">Nasyam</option>
-                <option value="kizhi">Kizhi (Pouch Therapy)</option>
-                <option value="herbal-consultation">Herbal Consultation &amp; Prescription</option>
-                <option value="diet-lifestyle">Diet &amp; Lifestyle Counselling</option>
-              </select>
-            </div>
-          </div>
+            <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm border border-[var(--color-forest)]/10 space-y-8">
+              <div>
+                <div className="flex items-center gap-2 mb-6 border-b border-[var(--color-forest)]/10 pb-3">
+                  <Clock className="w-5 h-5 text-[var(--color-terracotta)]" />
+                  <h2 className="text-xl font-serif font-semibold text-[var(--color-forest)]">Available Slots Today</h2>
+                </div>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-sm font-bold text-[var(--color-forest)]/70 uppercase tracking-wider mb-4">Morning</h3>
+                    {renderSlots(morningSlots)}
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-sm font-bold text-[var(--color-forest)]/70 uppercase tracking-wider mb-4">Afternoon</h3>
+                    {renderSlots(afternoonSlots)}
+                  </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label htmlFor="date" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Preferred Date</label>
-              <input 
-                type="date" 
-                id="date"
-                required
-                value={formData.date}
-                onChange={(e) => setFormData({...formData, date: e.target.value})}
-                className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide block mb-1">Preferred Time</span>
-              <div className="flex gap-4 mt-2">
-                <label className="flex items-center gap-2 text-sm text-[var(--color-forest)] font-medium cursor-pointer">
-                  <input 
-                    type="radio" 
-                    name="timeSlot"
-                    value="morning"
-                    checked={formData.timeSlot === "morning"}
-                    onChange={() => setFormData({...formData, timeSlot: "morning"})}
-                    className="accent-[var(--color-terracotta)]"
-                  />
-                  Morning (10am - 4pm)
-                </label>
-                <label className="flex items-center gap-2 text-sm text-[var(--color-forest)] font-medium cursor-pointer">
-                  <input 
-                    type="radio" 
-                    name="timeSlot"
-                    value="evening"
-                    checked={formData.timeSlot === "evening"}
-                    onChange={() => setFormData({...formData, timeSlot: "evening"})}
-                    className="accent-[var(--color-terracotta)]"
-                  />
-                  Evening (5pm - 8pm)
-                </label>
+                  <div>
+                    <h3 className="text-sm font-bold text-[var(--color-forest)]/70 uppercase tracking-wider mb-4">Evening</h3>
+                    {renderSlots(eveningSlots)}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="space-y-1">
-            <label htmlFor="message" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Health Concerns / Notes (Optional)</label>
-            <textarea 
-              id="message"
-              rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
-              className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium leading-relaxed"
-              placeholder="Briefly explain symptoms or relevant history..."
-            />
-          </div>
+          {/* Right Column: Booking Form */}
+          <div className="lg:col-span-5 sticky top-28">
+            <div className="bg-white p-6 md:p-8 rounded-sm shadow-sm border border-[var(--color-forest)]/10">
+              {submitted ? (
+                <div className="text-center py-10 space-y-4">
+                  <div className="inline-flex p-3 bg-green-50 rounded-full text-green-600 mb-2">
+                    <CheckCircle className="w-12 h-12" />
+                  </div>
+                  <h3 className="font-serif text-2xl font-semibold text-[var(--color-forest)]">Appointment Confirmed</h3>
+                  <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">
+                    Your consultation is booked for today at <strong className="text-[var(--color-forest)]">{selectedSlot}</strong>.
+                    You will receive an SMS confirmation shortly.
+                  </p>
+                  <button 
+                    onClick={() => {
+                      setSubmitted(false);
+                      setSelectedSlot(null);
+                      setFormData({ name: "", phone: "", reason: "" });
+                    }}
+                    className="text-xs font-semibold uppercase tracking-wider text-[var(--color-terracotta)] hover:underline pt-4 block w-full text-center"
+                  >
+                    Book Another
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-2xl font-serif font-semibold text-[var(--color-forest)] mb-2">Confirm Booking</h2>
+                  {selectedSlot ? (
+                    <p className="text-sm font-medium text-[var(--color-terracotta)] mb-6 bg-[var(--color-terracotta)]/10 p-3 rounded-sm">
+                      Selected Slot: {selectedSlot}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-[var(--color-forest)]/60 mb-6 italic">
+                      Please select a time slot from the left to proceed.
+                    </p>
+                  )}
 
-          <button 
-            type="submit"
-            className="w-full py-4 bg-[var(--color-forest)] text-[var(--color-cream)] font-semibold rounded-sm hover:bg-[var(--color-forest)]/90 transition-colors shadow-sm text-sm"
-          >
-            Request Consultation
-          </button>
-        </form>
-      )}
-    </div>
-  );
-}
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="space-y-1">
+                      <label htmlFor="name" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Patient Name</label>
+                      <input 
+                        type="text" 
+                        id="name"
+                        required
+                        disabled={!selectedSlot}
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium disabled:opacity-50"
+                        placeholder="Full Name"
+                      />
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <label htmlFor="phone" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Phone Number</label>
+                      <input 
+                        type="tel" 
+                        id="phone"
+                        required
+                        disabled={!selectedSlot}
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium disabled:opacity-50"
+                        placeholder="e.g. 9876543210"
+                      />
+                    </div>
 
-export default function AppointmentsPage() {
-  return (
-    <div className="flex flex-col min-h-screen bg-[var(--color-cream)]">
-      {/* Top Color Strip - Appointments */}
-      <div className="h-1.5 w-full bg-[#c084fc] shrink-0"></div>
-      {/* Header */}
-      <section className="pt-24 pb-8 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <h1 className="text-4xl md:text-5xl font-serif text-[var(--color-forest)] font-semibold mb-6">
-            Schedule a Consultation
-          </h1>
-          <p className="text-lg text-[var(--color-forest)]/80 max-w-2xl leading-relaxed">
-            Submit the request form below, or reach out directly via call or WhatsApp. Our clinic representative will finalize your time slot.
-          </p>
-          <div className="w-20 h-1 bg-[var(--color-terracotta)] rounded-full mt-6"></div>
-        </div>
-      </section>
+                    <div className="space-y-1">
+                      <label htmlFor="reason" className="text-xs font-bold text-[var(--color-forest)]/70 uppercase tracking-wide">Reason for Visit</label>
+                      <textarea 
+                        id="reason"
+                        required
+                        disabled={!selectedSlot}
+                        rows={3}
+                        value={formData.reason}
+                        onChange={(e) => setFormData({...formData, reason: e.target.value})}
+                        className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium resize-none disabled:opacity-50"
+                        placeholder="Briefly describe your symptoms or condition..."
+                      />
+                    </div>
 
-      {/* Alternative Phone/WhatsApp Bar */}
-      <section className="py-4 px-4">
-        <div className="container mx-auto max-w-5xl">
-          <div className="bg-white p-6 border border-[var(--color-forest)]/10 rounded-sm shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="space-y-1 text-center md:text-left">
-              <h4 className="font-serif text-lg font-semibold text-[var(--color-forest)]">Need Immediate Booking?</h4>
-              <p className="text-sm text-[var(--color-forest)]/70">Connect directly with our coordinators on call or via WhatsApp.</p>
+                    <button 
+                      type="submit"
+                      disabled={!selectedSlot}
+                      className="w-full py-4 bg-[var(--color-forest)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-forest)]/90 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed mt-2"
+                    >
+                      Confirm Appointment
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
-            <div className="flex flex-wrap items-center gap-3 w-full md:w-auto justify-center">
-              <a 
-                href="tel:1234567890" 
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-sm border border-[var(--color-forest)]/20 hover:border-[var(--color-forest)]/40 text-[var(--color-forest)] text-xs font-semibold uppercase tracking-wider transition-colors bg-white w-full sm:w-auto justify-center"
-              >
-                <Phone className="w-4 h-4 text-[var(--color-terracotta)]" /> Call 1234567890
-              </a>
-              <a 
-                href="https://wa.me/911234567890" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-sm bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold uppercase tracking-wider transition-colors w-full sm:w-auto justify-center"
-              >
-                <MessageCircle className="w-4 h-4 fill-current" /> Message on WhatsApp
-              </a>
-            </div>
           </div>
         </div>
-      </section>
-
-      {/* Main Grid */}
-      <section className="py-8 px-4 mb-20">
-        <div className="container mx-auto max-w-5xl">
-          <div className="max-w-3xl mx-auto">
-            
-            {/* Appointment Form with Suspense Boundary */}
-            <div>
-              <Suspense fallback={<div className="bg-white p-8 md:p-10 border border-[var(--color-forest)]/10 rounded-sm shadow-sm text-center">Loading request form...</div>}>
-                <AppointmentForm />
-              </Suspense>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

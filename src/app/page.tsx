@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, Leaf, Droplet, Wind, Coffee, Activity, Heart, ExternalLink, MapPin, Award, Users, Clock, HeartPulse, Bone, Smile, FlaskConical, Mail, Phone } from "lucide-react";
 import TherapiesSlider from "@/components/TherapiesSlider";
 import BackgroundCarousel from "@/components/BackgroundCarousel";
+import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
   const heroImages = [
@@ -365,6 +366,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
     </div>
   );
 }

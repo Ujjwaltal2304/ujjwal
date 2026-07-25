@@ -110,7 +110,7 @@ export default function Header() {
           </div>
 
           <div className="relative group">
-            <Link href="/appointments?service=lab-tests" className="text-sm font-medium hover:text-[var(--color-terracotta)] transition-colors">
+            <Link href="/lab-tests" className="text-sm font-medium hover:text-[var(--color-terracotta)] transition-colors">
               Lab Tests
             </Link>
             {/* Tooltip Popup */}
@@ -190,7 +190,7 @@ export default function Header() {
               Treatments
             </Link>
             <Link 
-              href="/appointments?service=lab-tests" 
+              href="/lab-tests" 
               className="text-sm font-medium text-[var(--color-forest)] p-3 hover:bg-[var(--color-forest)]/5 rounded-sm transition-colors" 
               onClick={() => setIsOpen(false)}
             >
