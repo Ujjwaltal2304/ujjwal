@@ -13,7 +13,44 @@ export default function Header() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group shrink-0">
-          <Leaf className="w-8 h-8 text-[var(--color-terracotta)] group-hover:opacity-80 transition-opacity" />
+          <div className="relative w-12 h-12 group-hover:scale-105 transition-transform duration-300">
+            <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm" xmlns="http://www.w3.org/2000/svg">
+              {/* Dotted arc */}
+              <circle cx="36" cy="40" r="1.5" fill="#71c837" />
+              <circle cx="32" cy="46" r="2" fill="#71c837" />
+              <circle cx="28" cy="53" r="2.5" fill="#71c837" />
+              <circle cx="26" cy="61" r="3" fill="#71c837" />
+              <circle cx="26" cy="69" r="3.5" fill="#71c837" />
+              <circle cx="28" cy="77" r="3.5" fill="#71c837" />
+              <circle cx="32" cy="84" r="3" fill="#71c837" />
+              <circle cx="38" cy="90" r="2.5" fill="#71c837" />
+              <circle cx="45" cy="94" r="2.5" fill="#71c837" />
+              <circle cx="52" cy="96" r="2" fill="#71c837" />
+              <circle cx="59" cy="96" r="2" fill="#71c837" />
+              <circle cx="66" cy="94" r="1.5" fill="#71c837" />
+              <circle cx="72" cy="91" r="1.5" fill="#71c837" />
+              <circle cx="77" cy="87" r="1" fill="#71c837" />
+              <circle cx="82" cy="83" r="1" fill="#71c837" />
+              <circle cx="86" cy="79" r="1" fill="#71c837" />
+
+              {/* Medical Cross */}
+              <path d="M 44 38 h 3 v -3 h 3 v 3 h 3 v 3 h -3 v 3 h -3 v -3 h -3 z" fill="#71c837" />
+
+              {/* Pestle */}
+              <path d="M 64 25 L 53 45 L 63 48 L 72 28 Z" fill="#28a745" />
+              <circle cx="69" cy="25" r="5" fill="#28a745" />
+
+              {/* Light Green Leaf */}
+              <path d="M 43,35 C 28,45 28,65 38,75 C 41,60 45,45 43,35 Z" fill="#71c837" />
+              
+              {/* Dark Green Leaf */}
+              <path d="M 69,40 C 72,55 58,75 40,78 C 45,65 55,45 69,40 Z" fill="#28a745" />
+              
+              {/* Veins */}
+              <path d="M 38,75 C 39,60 41,50 43,35" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <path d="M 40,78 C 50,70 60,55 69,40" stroke="white" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+            </svg>
+          </div>
           <div className="flex flex-col">
             <span className="font-serif text-xl font-semibold leading-none text-[var(--color-forest)]">
               Dr. Demo

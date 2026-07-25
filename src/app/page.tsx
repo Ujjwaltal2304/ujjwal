@@ -1,16 +1,24 @@
 import Link from "next/link";
 import { ArrowRight, Leaf, Droplet, Wind, Coffee, Activity, Heart, ExternalLink, MapPin, Award, Users, Clock, HeartPulse, Bone, Smile, FlaskConical, Mail, Phone } from "lucide-react";
 import TherapiesSlider from "@/components/TherapiesSlider";
+import BackgroundCarousel from "@/components/BackgroundCarousel";
 
 export default function Home() {
+  const heroImages = [
+    "/hero-bg/herbs-plates.png",
+    "/hero-bg/spice-spoons.png",
+    "/hero-bg/herbal-hands.png",
+    "/hero-bg/herbs-cutting-board.png"
+  ];
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Top Color Strip - Home */}
       <div className="h-1.5 w-full bg-[var(--color-terracotta)] shrink-0"></div>
+      
       {/* 1. Hero */}
-      <section className="relative py-32 md:py-48 overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg-image.png")' }}>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/60 pointer-events-none z-0"></div>
+      <section className="relative py-32 md:py-48 overflow-hidden">
+        <BackgroundCarousel images={heroImages} intervalMs={6000} overlayOpacity={45} />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
