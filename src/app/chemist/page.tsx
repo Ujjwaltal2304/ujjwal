@@ -27,5 +27,6 @@ export default function ChemistDashboard() {
         </div>
       </div>
     </div>
+    </div>
   );
 }
