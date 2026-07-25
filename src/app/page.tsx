@@ -23,7 +23,7 @@ export default function Home() {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-emerald-400 drop-shadow-md">
+            <span className="inline-flex items-center gap-2 text-base font-medium uppercase tracking-widest text-emerald-400 drop-shadow-md">
               <Leaf className="w-4 h-4" /> Established Ayurvedic Practice
             </span>
             <h1 className="text-4xl md:text-6xl font-serif text-white font-semibold leading-[1.15] drop-shadow-lg">
@@ -55,7 +55,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl font-serif text-[var(--color-forest)] font-medium">Under the Care of Dr. Demo</h2>
-            <p className="text-[var(--color-forest)]/80 leading-relaxed text-lg">
+            <p className="text-[var(--color-forest)]/80 leading-relaxed text-xl">
               With extensive clinical experience in traditional Ayurvedic medicine, Dr. Demo specializes in chronic disease management and authentic Panchkarma detoxification. Every treatment plan is meticulously tailored to the patient's unique physiological constitution and current state of health.
             </p>
             <Link href="/about" className="inline-flex items-center gap-2 text-[var(--color-terracotta)] font-medium hover:text-[var(--color-terracotta)]/80 transition-colors mt-2">
@@ -73,7 +73,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">GENERAL CLINICAL SPECIALISTS</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Providing targeted therapies and diagnostic assessments across key medical disciplines.</p>
+            <p className="text-lg text-[var(--color-forest)]/70 max-w-2xl mx-auto">Providing targeted therapies and diagnostic assessments across key medical disciplines.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -102,7 +102,7 @@ export default function Home() {
               <div key={idx} className="bg-[var(--color-cream)]/20 p-8 border border-[var(--color-forest)]/10 rounded-sm hover:border-[var(--color-terracotta)]/40 transition-colors">
                 <spec.icon className="w-8 h-8 text-[var(--color-terracotta)] mb-6" />
                 <h3 className="text-xl font-serif text-[var(--color-forest)] font-medium mb-3">{spec.title}</h3>
-                <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">{spec.desc}</p>
+                <p className="text-base text-[var(--color-forest)]/70 leading-relaxed">{spec.desc}</p>
               </div>
             ))}
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">DISEASE WISE SPECIALIST</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Focused Ayurvedic clinical expertise for specific chronic and lifestyle diseases.</p>
+            <p className="text-lg text-[var(--color-forest)]/70 max-w-2xl mx-auto">Focused Ayurvedic clinical expertise for specific chronic and lifestyle diseases.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -155,7 +155,7 @@ export default function Home() {
                   <spec.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-serif text-[var(--color-forest)] font-bold mb-3">{spec.title}</h3>
-                <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">
+                <p className="text-base text-[var(--color-forest)]/70 leading-relaxed">
                   {spec.desc}
                 </p>
                 <div className="mt-6">
@@ -173,7 +173,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">Specialized Therapies</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Comprehensive Ayurvedic treatments administered in a professional, clinical setting.</p>
+            <p className="text-lg text-[var(--color-forest)]/70 max-w-2xl mx-auto">Comprehensive Ayurvedic treatments administered in a professional, clinical setting.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -189,7 +189,7 @@ export default function Home() {
               <div key={idx} className="bg-white p-8 border border-[var(--color-forest)]/10 rounded-sm hover:border-[var(--color-terracotta)]/50 transition-colors group">
                 <treatment.icon className="w-8 h-8 text-[var(--color-terracotta)] mb-6 opacity-90" />
                 <h3 className="text-xl font-serif text-[var(--color-forest)] font-medium mb-3">{treatment.title}</h3>
-                <p className="text-[var(--color-forest)]/70 text-sm leading-relaxed mb-6">{treatment.desc}</p>
+                <p className="text-[var(--color-forest)]/70 text-base leading-relaxed mb-6">{treatment.desc}</p>
                 <Link href="/treatments" className="text-sm font-medium text-[var(--color-forest)] group-hover:text-[var(--color-terracotta)] transition-colors inline-flex items-center gap-1.5">
                   View details <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -204,7 +204,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">Book Clinical Blood Tests</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Get accurate, certified laboratory blood tests directly managed at our Main and City centers.</p>
+            <p className="text-lg text-[var(--color-forest)]/70 max-w-2xl mx-auto">Get accurate, certified laboratory blood tests directly managed at our Main and City centers.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -251,7 +251,7 @@ export default function Home() {
                 </div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {section.tests.map((test, testIdx) => (
-                    <li key={testIdx} className="flex items-start gap-2 text-sm text-[var(--color-forest)]/80">
+                    <li key={testIdx} className="flex items-start gap-2 text-base text-[var(--color-forest)]/80">
                       <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-terracotta)] mt-1.5 shrink-0" />
                       <span>{test}</span>
                     </li>
@@ -270,20 +270,20 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
               <div className="bg-white p-4 border border-[var(--color-forest)]/5 rounded-sm hover:border-[var(--color-terracotta)]/30 transition-colors">
                 <span className="text-[10px] font-bold tracking-wider text-[var(--color-terracotta)] uppercase block mb-1">Most Popular</span>
-                <h4 className="font-semibold text-sm text-[var(--color-forest)]">CBC &amp; ESR Panel</h4>
-                <p className="text-[10px] text-[var(--color-forest)]/60 mt-1">General Health &amp; Infection Check</p>
+                <h4 className="font-semibold text-base text-[var(--color-forest)]">CBC &amp; ESR Panel</h4>
+                <p className="text-xs text-[var(--color-forest)]/60 mt-1">General Health &amp; Infection Check</p>
                 <Link href="/appointments?service=lab-tests&test=cbc" className="mt-3 inline-block text-xs font-semibold text-[var(--color-terracotta)] hover:underline">Quick Book &rarr;</Link>
               </div>
               <div className="bg-white p-4 border border-[var(--color-forest)]/5 rounded-sm hover:border-[var(--color-terracotta)]/30 transition-colors">
                 <span className="text-[10px] font-bold tracking-wider text-[var(--color-terracotta)] uppercase block mb-1">Standard</span>
-                <h4 className="font-semibold text-sm text-[var(--color-forest)]">Lipid &amp; Sugar Panel</h4>
-                <p className="text-[10px] text-[var(--color-forest)]/60 mt-1">Heart &amp; Diabetes Health</p>
+                <h4 className="font-semibold text-base text-[var(--color-forest)]">Lipid &amp; Sugar Panel</h4>
+                <p className="text-xs text-[var(--color-forest)]/60 mt-1">Heart &amp; Diabetes Health</p>
                 <Link href="/appointments?service=lab-tests&test=lipid" className="mt-3 inline-block text-xs font-semibold text-[var(--color-terracotta)] hover:underline">Quick Book &rarr;</Link>
               </div>
               <div className="bg-white p-4 border border-[var(--color-forest)]/5 rounded-sm hover:border-[var(--color-terracotta)]/30 transition-colors">
                 <span className="text-[10px] font-bold tracking-wider text-[var(--color-terracotta)] uppercase block mb-1">Essential</span>
-                <h4 className="font-semibold text-sm text-[var(--color-forest)]">Thyroid (TSH Only)</h4>
-                <p className="text-[10px] text-[var(--color-forest)]/60 mt-1">Basic Metabolism Screen</p>
+                <h4 className="font-semibold text-base text-[var(--color-forest)]">Thyroid (TSH Only)</h4>
+                <p className="text-xs text-[var(--color-forest)]/60 mt-1">Basic Metabolism Screen</p>
                 <Link href="/appointments?service=lab-tests&test=thyroid" className="mt-3 inline-block text-xs font-semibold text-[var(--color-terracotta)] hover:underline">Quick Book &rarr;</Link>
               </div>
             </div>
@@ -322,7 +322,7 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium leading-snug">
               Begin your journey toward optimal health and lasting wellness.
             </h2>
-            <p className="text-[var(--color-forest)]/70 text-lg max-w-2xl mx-auto">
+            <p className="text-[var(--color-forest)]/70 text-xl max-w-2xl mx-auto">
               Schedule a consultation at either of our clinic locations to discuss a personalized treatment plan, or contact Dr. Demo directly.
             </p>
 
