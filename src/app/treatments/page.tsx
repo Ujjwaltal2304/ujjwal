@@ -63,6 +63,8 @@ export default function TreatmentsPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-cream)]">
+      {/* Top Color Strip - Treatments */}
+      <div className="h-1.5 w-full bg-[#fbbf24] shrink-0"></div>
       {/* Header */}
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-5xl">

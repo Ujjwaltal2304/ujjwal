@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+import WelcomeModal from "@/components/WelcomeModal";
+import SplashScreen from "@/components/SplashScreen";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -30,9 +33,11 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <SplashScreen />
         <Header />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
+        <WelcomeModal />
       </body>
     </html>
   );

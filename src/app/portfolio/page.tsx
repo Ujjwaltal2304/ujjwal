@@ -17,7 +17,7 @@ export default function PortfolioPage() {
     {
       id: 1,
       category: "facilities",
-      title: "Main Consultation Suite (Phagwara)",
+      title: "Main Consultation Suite (Main)",
       desc: "Private consultation room equipped for traditional pulse diagnostics (Nadi Pariksha) and patient history evaluations.",
       placeholder: "Consultation Suite Photo Placeholder\n[3:4 Portrait]"
     },
@@ -32,15 +32,15 @@ export default function PortfolioPage() {
       id: 3,
       category: "credentials",
       title: "State Council Registration Certificate",
-      desc: "Official medical practitioner credentials registered under the Board of Ayurvedic and Unani Systems of Medicine, Punjab.",
+      desc: "Official medical practitioner credentials registered under the Board of Ayurvedic and Unani Systems of Medicine, the region.",
       placeholder: "Registration Certificate\n[4:5 Portrait]"
     },
     {
       id: 4,
       category: "facilities",
-      title: "Evening Consult Clinic (Jalandhar)",
-      desc: "Our second consultation suite in Mann Nagar, Jalandhar, serving patients during evening hours.",
-      placeholder: "Jalandhar Consult Suite\n[4:3 Landscape]"
+      title: "Evening Consult Clinic (City)",
+      desc: "Our second consultation suite in Mann Nagar, City, serving patients during evening hours.",
+      placeholder: "City Consult Suite\n[4:3 Landscape]"
     },
     {
       id: 5,
@@ -61,22 +61,22 @@ export default function PortfolioPage() {
   const testimonials = [
     {
       quote: "The chronic digestive issues I suffered from for 5 years were addressed successfully by Dr. Demo. The clinical approach to Panchkarma and strict dietary adjustment made a massive difference.",
-      author: "Mr. Sharma, Phagwara",
+      author: "Mr. Sharma, Main",
       treatment: "Panchakarma (Detoxification)"
     },
     {
-      quote: "I visited the Jalandhar clinic for chronic sciatica pain. After 7 sessions of customized Abhyanga and specialized basti, the nerve compression reduced significantly.",
-      author: "Mrs. Kaur, Jalandhar",
+      quote: "I visited the City clinic for chronic sciatica pain. After 7 sessions of customized Abhyanga and specialized basti, the nerve compression reduced significantly.",
+      author: "Mrs. Kaur, City",
       treatment: "Abhyanga & Basti Therapy"
     },
     {
       quote: "Very professional clinical setup. Unlike commercial spas, Dr. Demo conducts a rigorous pulse diagnosis first and only prescribes therapies that are medically necessary.",
-      author: "Dr. A. Verma, Jalandhar",
+      author: "Dr. A. Verma, City",
       treatment: "General Consultation & Nasyam"
     },
     {
       quote: "I highly recommend the herbal treatments here. My long-standing skin issues have cleared up after three months of guided herbal medication and lifestyle advice.",
-      author: "S. Amit Singh, Phagwara",
+      author: "S. Amit Singh, Main",
       treatment: "Herbal Consultation"
     }
   ];
@@ -87,6 +87,8 @@ export default function PortfolioPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-cream)]">
+      {/* Top Color Strip - Portfolio */}
+      <div className="h-1.5 w-full bg-[#fb7185] shrink-0"></div>
       {/* Header */}
       <section className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-5xl">

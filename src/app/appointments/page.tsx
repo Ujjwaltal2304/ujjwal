@@ -44,7 +44,7 @@ function AppointmentForm() {
           </div>
           <h3 className="font-serif text-2xl font-semibold text-[var(--color-forest)]">Request Received</h3>
           <p className="text-sm text-[var(--color-forest)]/70 max-w-sm mx-auto leading-relaxed">
-            Thank you. We have received your consultation request. A representative from the {formData.location === "phagwara" ? "Phagwara" : "Jalandhar"} clinic will call you shortly to finalize your appointment.
+            Thank you. We have received your consultation request. A representative from the {formData.location === "phagwara" ? "Main" : "City"} clinic will call you shortly to finalize your appointment.
           </p>
           <button 
             onClick={() => {
@@ -101,8 +101,8 @@ function AppointmentForm() {
                 onChange={(e) => setFormData({...formData, location: e.target.value})}
                 className="w-full px-4 py-3 rounded-sm border border-[var(--color-forest)]/15 focus:outline-none focus:border-[var(--color-terracotta)] text-sm bg-[var(--color-cream)]/30 text-[var(--color-forest)] font-medium"
               >
-                <option value="phagwara">Phagwara Clinic</option>
-                <option value="jalandhar">Jalandhar Clinic</option>
+                <option value="phagwara">Main Clinic</option>
+                <option value="jalandhar">City Clinic</option>
               </select>
             </div>
 
@@ -195,6 +195,8 @@ function AppointmentForm() {
 export default function AppointmentsPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-cream)]">
+      {/* Top Color Strip - Appointments */}
+      <div className="h-1.5 w-full bg-[#c084fc] shrink-0"></div>
       {/* Header */}
       <section className="pt-24 pb-8 px-4">
         <div className="container mx-auto max-w-5xl">
@@ -239,78 +241,13 @@ export default function AppointmentsPage() {
       {/* Main Grid */}
       <section className="py-8 px-4 mb-20">
         <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div className="max-w-3xl mx-auto">
             
             {/* Appointment Form with Suspense Boundary */}
-            <div className="lg:col-span-7">
+            <div>
               <Suspense fallback={<div className="bg-white p-8 md:p-10 border border-[var(--color-forest)]/10 rounded-sm shadow-sm text-center">Loading request form...</div>}>
                 <AppointmentForm />
               </Suspense>
-            </div>
-
-            {/* Clinic Details Sidebar */}
-            <div className="lg:col-span-5 space-y-8">
-              
-              {/* Phagwara Sidebar Card */}
-              <div className="bg-white p-6 border border-[var(--color-forest)]/10 rounded-sm shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-[var(--color-forest)]/5 pb-3">
-                  <h3 className="font-serif text-lg font-bold text-[var(--color-forest)]">Phagwara Clinic</h3>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 bg-green-50 text-green-700 rounded-full border border-green-200">Main Facility</span>
-                </div>
-                <div className="space-y-3 text-sm text-[var(--color-forest)]/80 leading-relaxed">
-                  <p className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[var(--color-terracotta)] shrink-0 mt-1" />
-                    <span>Singla Market, Prime Tower, opposite Bus Stand Road, Phagwara, Punjab 144401</span>
-                  </p>
-                  <p className="flex items-center gap-2.5">
-                    <Clock className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>10:00 AM – 4:00 PM (Sunday Off)</span>
-                  </p>
-                  <p className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>1234567890</span>
-                  </p>
-                </div>
-                <a 
-                  href="https://maps.app.goo.gl/LinxEXfSQyDCB7km7" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[var(--color-cream)] hover:bg-[var(--color-cream)]/80 text-[var(--color-forest)] font-medium rounded-sm text-xs border border-[var(--color-forest)]/10 transition-colors"
-                >
-                  View Directions <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
-              {/* Jalandhar Sidebar Card */}
-              <div className="bg-white p-6 border border-[var(--color-forest)]/10 rounded-sm shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-[var(--color-forest)]/5 pb-3">
-                  <h3 className="font-serif text-lg font-bold text-[var(--color-forest)]">Jalandhar Clinic</h3>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 bg-green-50 text-green-700 rounded-full border border-green-200">Evening Facility</span>
-                </div>
-                <div className="space-y-3 text-sm text-[var(--color-forest)]/80 leading-relaxed">
-                  <p className="flex items-start gap-2.5">
-                    <MapPin className="w-4 h-4 text-[var(--color-terracotta)] shrink-0 mt-1" />
-                    <span>119, Mann Nagar, near Satguru Kabir Chowk, Wadala Chowk Road, Urban Estate, Jalandhar, Punjab 144001</span>
-                  </p>
-                  <p className="flex items-center gap-2.5">
-                    <Clock className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>5:00 PM – 8:00 PM (Sunday Off)</span>
-                  </p>
-                  <p className="flex items-center gap-2.5">
-                    <Phone className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <span>1234567890</span>
-                  </p>
-                </div>
-                <a 
-                  href="https://maps.app.goo.gl/jKiWeG4DbcQLTeVZ7" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[var(--color-cream)] hover:bg-[var(--color-cream)]/80 text-[var(--color-forest)] font-medium rounded-sm text-xs border border-[var(--color-forest)]/10 transition-colors"
-                >
-                  View Directions <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-
             </div>
 
           </div>

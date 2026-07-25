@@ -3,6 +3,8 @@ import { Award, GraduationCap, MapPin } from "lucide-react";
 export default function AboutPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[var(--color-cream)]">
+      {/* Top Color Strip - About */}
+      <div className="h-1.5 w-full bg-[#38bdf8] shrink-0"></div>
       {/* Header Section */}
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto max-w-5xl">
@@ -94,27 +96,6 @@ export default function AboutPage() {
                     </div>
                   </div>
 
-                  {/* Timeline Item 2 */}
-                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[var(--color-cream)] bg-[var(--color-terracotta)] text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-sm border border-[var(--color-forest)]/10 shadow-sm">
-                      <h3 className="font-semibold text-[var(--color-forest)] mb-1">Phagwara Clinic Established</h3>
-                      <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">Opened the primary Panchkarma center in Phagwara, offering comprehensive indoor therapies and chronic care.</p>
-                    </div>
-                  </div>
-
-                  {/* Timeline Item 3 */}
-                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-[var(--color-cream)] bg-[var(--color-terracotta)] text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-sm border border-[var(--color-forest)]/10 shadow-sm">
-                      <h3 className="font-semibold text-[var(--color-forest)] mb-1">Jalandhar Expansion</h3>
-                      <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">Extended clinical services to Jalandhar to serve a growing patient base with evening consultation hours.</p>
-                    </div>
-                  </div>
 
                   {/* Timeline Item 4 */}
                   <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
@@ -123,7 +104,7 @@ export default function AboutPage() {
                     </div>
                     <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-sm border border-[var(--color-forest)]/10 shadow-sm">
                       <h3 className="font-semibold text-[var(--color-forest)] mb-1">15+ Years of Excellence</h3>
-                      <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">Continuing to lead the field in authentic Ayurvedic treatments, having successfully treated over 5,000 patients across Punjab.</p>
+                      <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">Continuing to lead the field in authentic Ayurvedic treatments, having successfully treated over 5,000 patients across the region.</p>
                     </div>
                   </div>
 

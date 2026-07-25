@@ -1,23 +1,26 @@
 import Link from "next/link";
 import { ArrowRight, Leaf, Droplet, Wind, Coffee, Activity, Heart, ExternalLink, MapPin, Award, Users, Clock, HeartPulse, Bone, Smile, FlaskConical, Mail, Phone } from "lucide-react";
+import TherapiesSlider from "@/components/TherapiesSlider";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+      {/* Top Color Strip - Home */}
+      <div className="h-1.5 w-full bg-[var(--color-terracotta)] shrink-0"></div>
       {/* 1. Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[var(--color-cream)]">
-        {/* Subtle decorative linework/texture */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--color-forest) 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
+      <section className="relative py-32 md:py-48 overflow-hidden bg-cover bg-center bg-fixed" style={{ backgroundImage: 'url("/bg-image.png")' }}>
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/60 pointer-events-none z-0"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-[var(--color-terracotta)]">
+            <span className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-emerald-400 drop-shadow-md">
               <Leaf className="w-4 h-4" /> Established Ayurvedic Practice
             </span>
-            <h1 className="text-4xl md:text-6xl font-serif text-[var(--color-forest)] font-semibold leading-[1.15]">
-              Authentic Panchkarma &amp; <br className="hidden md:block" /> Ayurvedic Care Across Punjab
+            <h1 className="text-4xl md:text-6xl font-serif text-white font-semibold leading-[1.15] drop-shadow-lg">
+              Authentic Panchkarma &amp; <br className="hidden md:block" /> Ayurvedic Care Across the region
             </h1>
-            <p className="text-lg md:text-xl text-[var(--color-forest)]/80 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               Clinical, evidence-based Ayurvedic medicine and traditional Panchkarma therapies to restore your body's natural balance.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
@@ -29,7 +32,7 @@ export default function Home() {
               </Link>
               <Link 
                 href="/treatments" 
-                className="btn-pop px-8 py-4 bg-transparent text-[var(--color-forest)] font-medium rounded-sm border border-[var(--color-forest)]/20 hover:border-[var(--color-forest)]/40 transition-colors"
+                className="btn-pop px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-medium rounded-sm border border-white/30 hover:border-white/60 hover:bg-white/20 transition-colors shadow-sm"
               >
                 Explore Treatments
               </Link>
@@ -53,34 +56,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Popular Therapies Slider */}
+      <TherapiesSlider />
+
       {/* Specialities Section */}
       <section className="py-20 bg-white border-b border-[var(--color-forest)]/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">Clinical Specialities</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">GENERAL CLINICAL SPECIALISTS</h2>
             <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Providing targeted therapies and diagnostic assessments across key medical disciplines.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {[
               {
-                title: "Cardiology",
-                desc: "Ayurvedic cardiovascular support focusing on arterial health, blood pressure management, and heart resilience.",
+                title: "General Ayurveda Physician",
+                desc: "Expert consultation and diagnostic assessments for overall health, metabolic balance, and holistic wellness.",
+                icon: Activity
+              },
+              {
+                title: "Panchkarma Specialists",
+                desc: "Complete metabolic restoration and customized detoxification therapies for chronic condition management.",
+                icon: Droplet
+              },
+              {
+                title: "Kayachitsa (General Medicine)",
+                desc: "Traditional Ayurvedic internal medicine focusing on treating the entire body system and treating systemic diseases.",
                 icon: HeartPulse
               },
               {
-                title: "Orthopedics",
-                desc: "Therapies for joint regeneration, skeletal strength, back pain relief, sciatica management, and arthritis care.",
-                icon: Bone
-              },
-              {
-                title: "Dental Care",
-                desc: "Traditional oral therapies including oil pulling (Gandusha) and mineral-rich herbal treatments for gum and tooth vitality.",
-                icon: Smile
-              },
-              {
-                title: "Ayurveda & Panchkarma",
-                desc: "Complete metabolic restoration, chronic disease diagnostics, and customized detoxification treatments.",
+                title: "Swasthavaritta (Preventive Healthcare)",
+                desc: "Preventive medicine, lifestyle modifications, and dietary counseling to maintain optimal health and immunity.",
                 icon: Leaf
               }
             ].map((spec, idx) => (
@@ -94,97 +100,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Specialized Clinical Programs (Heart & Cancer Care) */}
+      {/* Disease Wise Specialists */}
       <section className="py-20 bg-[var(--color-cream)]/45 border-b border-[var(--color-forest)]/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-[var(--color-terracotta)]">Specialized Programs</span>
-            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">Cardiology &amp; Supportive Oncology</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Scientifically guided Ayurvedic protocols designed to support cardiac recovery and provide cellular restoration for oncology patients.</p>
+            <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">DISEASE WISE SPECIALIST</h2>
+            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Focused Ayurvedic clinical expertise for specific chronic and lifestyle diseases.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Heart Patient Program */}
-            <div className="bg-white p-8 border border-[var(--color-forest)]/10 rounded-sm shadow-sm flex flex-col justify-between hover:border-[var(--color-terracotta)]/40 transition-colors">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-[var(--color-cream)] rounded-sm text-[var(--color-terracotta)]">
-                    <HeartPulse className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-serif text-[var(--color-forest)] font-bold">Cardiovascular Care</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Diabetes Specialist",
+                desc: "Metabolic correction and blood sugar regulation through authentic dietary planning and Ayurvedic formulations.",
+                icon: Activity
+              },
+              {
+                title: "Arthritis & Joint Pain Specialist",
+                desc: "Targeted therapies for pain relief, joint mobility restoration, and cartilage support in all forms of arthritis.",
+                icon: Bone
+              },
+              {
+                title: "Digestive Disorder Specialist",
+                desc: "Treatment for acidity, IBS, chronic constipation, and restoring gut microbiome balance using natural herbs.",
+                icon: Leaf
+              },
+              {
+                title: "Skin & Hair Specialist",
+                desc: "Holistic care for chronic dermatological conditions and natural hair revitalization therapies.",
+                icon: Smile
+              },
+              {
+                title: "Liver & Kidney Care Specialist",
+                desc: "Advanced detoxification protocols and supportive care for optimal hepatic and renal function.",
+                icon: Droplet
+              },
+              {
+                title: "PCOS & Women's Health Specialist",
+                desc: "Hormonal balancing, menstrual regulation, and comprehensive gynecological support through Ayurveda.",
+                icon: Users
+              }
+            ].map((spec, idx) => (
+              <div key={idx} className="bg-white p-8 border border-[var(--color-forest)]/10 rounded-sm shadow-sm flex flex-col items-center text-center hover:border-[var(--color-terracotta)]/40 transition-colors">
+                <div className="p-3 bg-[var(--color-cream)] rounded-full text-[var(--color-terracotta)] mb-4">
+                  <spec.icon className="w-8 h-8" />
                 </div>
-                <p className="text-sm text-[var(--color-forest)]/80 leading-relaxed">
-                  Our heart wellness program focuses on optimizing arterial health, managing vascular pressure, and reducing systemic stress through classical Ayurvedic methods.
+                <h3 className="text-xl font-serif text-[var(--color-forest)] font-bold mb-3">{spec.title}</h3>
+                <p className="text-sm text-[var(--color-forest)]/70 leading-relaxed">
+                  {spec.desc}
                 </p>
-                
-                <div className="space-y-4 pt-2 border-t border-[var(--color-forest)]/5">
-                  <div>
-                    <h4 className="text-xs font-bold text-[var(--color-forest)] uppercase tracking-wider mb-1">Key Treatments</h4>
-                    <ul className="text-xs text-[var(--color-forest)]/70 space-y-1.5 list-disc pl-4">
-                      <li><strong>Hrud Basti:</strong> Medicated oil pooling over the cardiac region to strengthen heart muscles.</li>
-                      <li><strong>Shirodhara:</strong> Neuro-hormonal calming to alleviate cardiac hypertension.</li>
-                      <li><strong>Arjuna Ksheerapaka:</strong> Traditional medicated milk decoction for vascular resilience.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[var(--color-forest)] uppercase tracking-wider mb-1">Common Prescriptions</h4>
-                    <p className="text-xs text-[var(--color-forest)]/70 leading-relaxed">
-                      Cardiotonic formulations including <em>Arjunarishta</em>, <em>Prabhakar Vati</em>, and <em>Hridayarnava Rasa</em> under clinical supervision.
-                    </p>
-                  </div>
+                <div className="mt-6">
+                  <Link href={`/appointments?specialist=${encodeURIComponent(spec.title)}`} className="text-[var(--color-terracotta)] font-medium text-sm hover:underline flex items-center justify-center gap-1">
+                    Consult Now <ArrowRight className="w-3 h-3" />
+                  </Link>
                 </div>
               </div>
-
-              <div className="pt-8">
-                <Link href="/appointments?treatment=cardiology" className="inline-flex items-center justify-center w-full py-3 bg-[var(--color-forest)] hover:bg-[var(--color-forest)]/90 text-[var(--color-cream)] font-medium rounded-sm text-xs transition-colors shadow-sm">
-                  Book Cardiology Consultation
-                </Link>
-              </div>
-            </div>
-
-            {/* Cancer Patient Supportive Program */}
-            <div className="bg-white p-8 border border-[var(--color-forest)]/10 rounded-sm shadow-sm flex flex-col justify-between hover:border-[var(--color-terracotta)]/40 transition-colors">
-              <div className="space-y-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2.5 bg-[var(--color-cream)] rounded-sm text-[var(--color-terracotta)]">
-                    <Activity className="w-6 h-6" />
-                  </div>
-                  <h3 className="text-xl font-serif text-[var(--color-forest)] font-bold">Supportive Oncology Care</h3>
-                </div>
-                <p className="text-sm text-[var(--color-forest)]/80 leading-relaxed">
-                  Complementary protocols to assist patients undergoing chemotherapy and radiation. Designed to boost immunity, alleviate treatment side effects, and improve quality of life.
-                </p>
-
-                <div className="space-y-4 pt-2 border-t border-[var(--color-forest)]/5">
-                  <div>
-                    <h4 className="text-xs font-bold text-[var(--color-forest)] uppercase tracking-wider mb-1">Key Programs</h4>
-                    <ul className="text-xs text-[var(--color-forest)]/70 space-y-1.5 list-disc pl-4">
-                      <li><strong>Rasayana Therapy:</strong> Rejuvenation therapies focused on cellular restoration and cellular immunity.</li>
-                      <li><strong>Symptomatic Relief:</strong> Natural therapies to reduce nausea, loss of appetite, and chronic fatigue.</li>
-                      <li><strong>Guided Ahara:</strong> Highly regulated nutritional diets to support liver and kidney detoxification during chemo.</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-[var(--color-forest)] uppercase tracking-wider mb-1">Common Prescriptions</h4>
-                    <p className="text-xs text-[var(--color-forest)]/70 leading-relaxed">
-                      Immunomodulating preparations including <em>Ashwagandha</em>, <em>Kanchanar Guggulu</em>, and customized <em>Amalaki Rasayana</em>.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-8">
-                <Link href="/appointments?treatment=oncology" className="inline-flex items-center justify-center w-full py-3 bg-[var(--color-forest)] hover:bg-[var(--color-forest)]/90 text-[var(--color-cream)] font-medium rounded-sm text-xs transition-colors shadow-sm">
-                  Book Supportive Oncology Consult
-                </Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-[10px] text-[var(--color-forest)]/50 italic max-w-lg mx-auto">
-              *Note: Oncology protocols are supportive and complementary. They do not replace standard chemotherapy, radiation, or surgical interventions.
-            </p>
+            ))}
           </div>
         </div>
       </section>
@@ -224,64 +195,62 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-serif text-[var(--color-forest)] font-medium">Book Clinical Blood Tests</h2>
-            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Get accurate, certified laboratory blood tests directly managed at our Phagwara and Jalandhar centers.</p>
+            <p className="text-[var(--color-forest)]/70 max-w-2xl mx-auto">Get accurate, certified laboratory blood tests directly managed at our Main and City centers.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                title: "Complete Blood Count (CBC)",
-                desc: "Evaluates overall health and detects a wide range of conditions including anemia, infection, and leukemia.",
-                tooltip: "Analyzes red blood cells, white blood cells, platelets, hemoglobin, and hematocrit. No fasting required. Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=cbc"
+                category: "Diabetes and Sugar",
+                icon: Activity,
+                tests: ["Blood Sugar (Fasting)", "Blood Sugar (PP)"]
               },
               {
-                title: "Lipid Profile (Cholesterol)",
-                desc: "Measures cholesterol and triglyceride levels to assess cardiovascular risk and lipid metabolism.",
-                tooltip: "Measures Total Cholesterol, HDL (good), LDL (bad), and Triglycerides. Requires 10-12 hours strict fasting. Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=lipid"
+                category: "General Health",
+                icon: HeartPulse,
+                tests: ["Complete Blood Count (CBC)", "ESR", "CRP (Inflammation)"]
               },
               {
-                title: "Thyroid Profile (T3, T4, TSH)",
-                desc: "Evaluates thyroid gland function and diagnoses metabolic rate anomalies, hypo- or hyperthyroidism.",
-                tooltip: "Measures Total T3, Total T4, and Thyroid Stimulating Hormone (TSH). Morning sample preferred. Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=thyroid"
+                category: "Thyroid",
+                icon: FlaskConical,
+                tests: ["T3", "T4", "TSH"]
               },
               {
-                title: "Diabetes Panel (HbA1c & Sugar)",
-                desc: "Monitors glycemic control, average blood sugar levels, and assists in diabetes diagnosis.",
-                tooltip: "Includes Fasting Blood Glucose and HbA1c (3-month average). Fasting required for glucose. Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=diabetes"
+                category: "Infection and Immunity",
+                icon: Leaf,
+                tests: ["Dengue Test", "Typhoid Test", "Malaria Test", "Covid-19 Test (if applicable)"]
               },
               {
-                title: "Liver Function Test (LFT)",
-                desc: "Assesses hepatic health, enzyme levels, protein synthesis, and detects potential liver disorders.",
-                tooltip: "Measures Bilirubin, SGOT, SGPT, Alkaline Phosphatase, Albumin, and Total Protein. Fasting preferred. Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=lft"
-              },
-              {
-                title: "Kidney Function Test (KFT)",
-                desc: "Evaluates renal filtration efficacy, electrolyte balance, and detects signs of kidney stress.",
-                tooltip: "Measures Blood Urea, Serum Creatinine, Uric Acid, and vital electrolytes (Sodium, Potassium). Reports in 24 hours.",
-                link: "/appointments?service=lab-tests&test=kft"
+                category: "Full Body Packages",
+                icon: Users,
+                tests: [
+                  "Basic Health Checkup",
+                  "Diabetes Packages",
+                  "Thyroid Packages",
+                  "Women's Health Packages",
+                  "Senior Citizen Health Checkup",
+                  "Full Body Checkup"
+                ]
               }
-            ].map((test, idx) => (
-              <div key={idx} className="relative bg-[var(--color-cream)]/20 p-8 border border-[var(--color-forest)]/10 rounded-sm hover:border-[var(--color-terracotta)]/40 transition-colors group cursor-help flex flex-col justify-between">
-                <div>
-                  <FlaskConical className="w-8 h-8 text-[var(--color-terracotta)] mb-6" />
-                  <h3 className="text-lg font-serif text-[var(--color-forest)] font-medium mb-3">{test.title}</h3>
-                  <p className="text-xs text-[var(--color-forest)]/70 leading-relaxed mb-6">{test.desc}</p>
+            ].map((section, idx) => (
+              <div key={idx} className="bg-[var(--color-cream)]/20 p-8 border border-[var(--color-forest)]/10 rounded-sm hover:border-[var(--color-terracotta)]/40 transition-colors flex flex-col">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-white rounded-full text-[var(--color-terracotta)] shadow-sm">
+                    <section.icon className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-xl font-serif text-[var(--color-forest)] font-medium">{section.category}</h3>
                 </div>
-                <Link href={test.link} className="text-xs font-semibold text-[var(--color-forest)] group-hover:text-[var(--color-terracotta)] transition-colors inline-flex items-center gap-1">
-                  Book This Test <ArrowRight className="w-3.5 h-3.5" />
+                <ul className="space-y-3 mb-8 flex-1">
+                  {section.tests.map((test, testIdx) => (
+                    <li key={testIdx} className="flex items-start gap-2 text-sm text-[var(--color-forest)]/80">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-terracotta)] mt-1.5 shrink-0" />
+                      <span>{test}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href={`/appointments?category=${encodeURIComponent(section.category)}`} className="text-xs font-semibold text-[var(--color-forest)] hover:text-[var(--color-terracotta)] transition-colors inline-flex items-center gap-1 mt-auto">
+                  Book from this category <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-
-                {/* Tooltip Popup on Hover */}
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 bg-[var(--color-forest)] text-[var(--color-cream)] text-[11px] p-3 rounded-sm opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity z-50 shadow-lg text-center leading-relaxed border border-[var(--color-cream)]/15">
-                  <div className="font-bold mb-1 uppercase tracking-wider text-[var(--color-terracotta)]">Clinical Details</div>
-                  {test.tooltip}
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-[var(--color-forest)]"></div>
-                </div>
               </div>
             ))}
           </div>
@@ -313,70 +282,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-[var(--color-forest)] text-[var(--color-cream)]">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-4xl font-serif font-medium">Clinic Locations</h2>
-            <p className="text-[var(--color-cream)]/70 max-w-2xl mx-auto">Serving patients across two dedicated facilities in Punjab.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Phagwara */}
-            <div className="bg-[var(--color-cream)]/5 p-8 border border-[var(--color-cream)]/10 rounded-sm">
-              <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-[var(--color-terracotta)] shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-serif font-medium mb-4">Phagwara Clinic</h3>
-                  <div className="space-y-1 text-[var(--color-cream)]/80 text-sm leading-relaxed mb-6">
-                    <p>Singla Market, Prime Tower</p>
-                    <p>Opposite Bus Stand Road</p>
-                    <p>Phagwara, Punjab 144401</p>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-[var(--color-cream)]/90 font-medium mb-8">
-                    <Clock className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <p>10:00 AM – 4:00 PM (Sunday off)</p>
-                  </div>
-                  <a 
-                    href="https://maps.app.goo.gl/LinxEXfSQyDCB7km7" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-[var(--color-terracotta)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-terracotta)]/90 transition-colors text-sm"
-                  >
-                    Get Directions <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Jalandhar */}
-            <div className="bg-[var(--color-cream)]/5 p-8 border border-[var(--color-cream)]/10 rounded-sm">
-              <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-[var(--color-terracotta)] shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-serif font-medium mb-4">Jalandhar Clinic</h3>
-                  <div className="space-y-1 text-[var(--color-cream)]/80 text-sm leading-relaxed mb-6">
-                    <p>119, Mann Nagar, near Satguru Kabir Chowk</p>
-                    <p>Wadala Chowk Road, Urban Estate</p>
-                    <p>Jalandhar, Punjab 144001</p>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-[var(--color-cream)]/90 font-medium mb-8">
-                    <Clock className="w-4 h-4 text-[var(--color-terracotta)]" />
-                    <p>5:00 PM – 8:00 PM (Sunday off)</p>
-                  </div>
-                  <a 
-                    href="https://maps.app.goo.gl/jKiWeG4DbcQLTeVZ7" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-[var(--color-terracotta)] text-[var(--color-cream)] font-medium rounded-sm hover:bg-[var(--color-terracotta)]/90 transition-colors text-sm"
-                  >
-                    Get Directions <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 5. Simple trust strip */}
       <section className="py-16 bg-white border-b border-[var(--color-forest)]/10">
